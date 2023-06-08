@@ -15,7 +15,7 @@ import HelloWorld from './components/HelloWorld.vue'
   </div>
   <HelloWorld msg="Vite + Vue" /> -->
 
-<h2>Coming Soon...</h2>
+<h2>Coming Soon...!</h2>
 
 </template>
 
