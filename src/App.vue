@@ -25,10 +25,14 @@ const entered = ref(false);
     <!-- [Links here maybe?] -->
     <h1>Let The Universe Decide</h1>
   </header>
-  <section>
-    
-    <Intro v-if="!entered" @entered="entered = true"></Intro>
-    <Decider v-if="entered"></Decider>
+
+
+  <section>  
+
+    <RouterView />
+
+    <!-- <Intro v-if="!entered" @entered="entered = true"></Intro>
+    <Decider v-if="entered"></Decider> -->
   </section>
 
 

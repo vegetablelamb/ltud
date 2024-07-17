@@ -48,7 +48,7 @@ const reset = () => {
 
   <div class="ltud-choices" v-if="!isChoosing">
 
-    <form @submit.prevent="addDecision">
+    <form @submit.prevent="addDecision" autocomplete="off">
 
       <label for="choice">Add choice: </label>
       <input id="choice" type="text" placeholder="" v-model="newChoice">
