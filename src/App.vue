@@ -1,34 +1,55 @@
 <script setup>
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
+import { ref } from 'vue';
+import Decider from './components/Decider.vue';
+import Intro from './components/Intro.vue';
+
+const entered = ref(false);
+
 </script>
 
 <template>
-  <!-- <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" /> -->
 
-<h2>Coming Soon...!</h2>
+<div class="star-container">
+  <div id="space">
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+  </div>
+</div>
+<div class="container">
+  <header>
+    <!-- [Links here maybe?] -->
+    <h1>Let The Universe Decide</h1>
+  </header>
+
+
+  <section>  
+
+    <RouterView />
+
+    <!-- <Intro v-if="!entered" @entered="entered = true"></Intro>
+    <Decider v-if="entered"></Decider> -->
+  </section>
+
+
+
+
+
+  <footer>
+    2024
+  </footer>
+</div>
+
+
+
+
 
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+
 </style>
