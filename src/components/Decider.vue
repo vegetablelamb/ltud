@@ -33,7 +33,7 @@ const decide = () => {
   setTimeout(() => {
     hasChosen.value = true
 
-  }, 500)
+  }, 1000)
 
 }
 
@@ -46,17 +46,18 @@ const reset = () => {
 
 <template>
 
-  <div v-if="!isChoosing">
+  <div class="ltud-choices" v-if="!isChoosing">
 
     <form @submit.prevent="addDecision">
 
-      <input type="text" placeholder="Enter choice" v-model="newChoice">
-      <button :disabled="!newChoice">Add</button>
+      <label for="choice">Add choice: </label>
+      <input id="choice" type="text" placeholder="" v-model="newChoice">
+      <button :disabled="!newChoice">+</button>
     </form>
 
     <ul>
       <li v-for="(decision, index) in choices">
-        {{ decision }} {{ index }}
+        {{ decision }}
         <button @click="removeChoice(index)">x</button>
       </li>
     </ul>
@@ -72,3 +73,43 @@ const reset = () => {
   <button v-if="hasChosen" @click="reset()">Reset</button>
 
 </template>
+
+
+<style scoped>
+
+ul, li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul {
+  /* background: pink; */
+  max-width: 400px;
+  margin: auto;
+  margin-top: 42px;
+}
+
+li {
+  display: flex;
+  button {
+    margin-left: auto;
+  }
+}
+
+form {
+  text-align: center;
+
+  button {
+    margin-left: 4px;
+  }
+}
+
+.ltud-choices {
+  text-align: center;
+
+  ul + button {
+    margin-top: 58px;
+  }
+}
+</style>
