@@ -50,6 +50,28 @@ const entered = ref(false);
 
 </template>
 
-<style scoped>
+<style>
+@font-face {
+  font-family: 'Komrade';
+  src: url('/fonts/Komrade/Komrade-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Franchise';
+  src: url('/fonts/Franchise/FranchiseRegular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Carbon';
+  src: url('/fonts/Carbon/CarbonBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Globe';
+  src: url('/fonts/Globe/TheGlobeBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Orbit';
+  src: url('/fonts/Orbit/OrbitBold.ttf') format('truetype');
+}
 
 </style>

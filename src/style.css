@@ -1,3 +1,12 @@
+
+
+/* @font-face {
+  font-family: "Komrade";
+  src: local("Komrade"),
+  url(../../static/fonts/Gilroy-Regular.otf) format("opentype");
+  font-weight: 400;
+} */
+
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   /* 
@@ -17,25 +26,55 @@
 
   margin: 0;
 
-  --main-bg-color: #1d0921;
+  --colour-primary: #31468D;
+  --colour-secondary: #F2BA31;
+  --colour-tertiary: #BD6F53;
+  --colour-four: #25326E;
+  --colour-five: #7A695D;
+  --colour-six: #DD3A4B; /*red - - add semantic name?*/
+
+
+
+  /* --main-bg-color: #1d0921; */
+  --main-bg-color: var(--colour-four);
   --secondary-bg-color: pink;
   --primary-text-color: #ffffffde;
+  
+  /* --secondary-text-color: #ffaa00; */
+  --secondary-text-color: var(--colour-secondary);
 
 
   background-color: var(--main-bg-color);
+
 }
+
 body {
   margin: 0;
   color: var(--primary-text-color);
 
 }
 
+h1 {
+  font-family: 'Carbon';
+  color: var(--secondary-text-color);
+  font-size: min(9vw, 62px);
+}
+/* h1.one {
+  font-family: 'Carbon';
+}
+h1.two {
+  font-family: 'Globe';
+}
+h1.three {
+  font-family: 'Orbit';
+} */
+
 p {
   margin: 0;
 }
 
 section {
-  padding: 12px;
+  padding: 12px 24px;
 }
 
 .container {
@@ -55,6 +94,53 @@ button {
   padding: 4px 6px;
   line-height: 1;
   border-radius: 6px;
+
+  background-color: var(--colour-secondary);
+  color: var(--colour-primary);
+  border: 1px solid var(--colour-primary);
+}
+
+button:hover {
+    background-color: var(--colour-primary);
+    color: var(--colour-secondary);
+    border: 1px solid var(--colour-secondary);
+    cursor: pointer;
+}
+button:disabled {
+    background-color: var(--colour-five);
+    color: var(--colour-secondary);
+    border: 1px solid var(--colour-secondary);
+    cursor:default;
+}
+
+button.ltud-btn--small {
+  background: var(--colour-six);
+  height: 26px;
+    width: 26px;
+    line-height: 13px;
+    border-radius: 13px;
+    max-width: none;
+
+    border: 1px solid var(--colour-secondary);
+}
+
+button.ltud-btn--large {
+  font-family: 'Carbon';
+  font-size: min(7vw, 42px);
+  border-radius: 19px;
+  padding: 4px 19px;
+  border: 2px #BD6F53 solid; /* sort out var name */
+}
+
+.ltud-message {
+  padding-top: 6px;
+  display: block;
+}
+
+.ltud-message.ltud-message--is-warning {
+  color: var(--colour-six);
+  font-style: italic;
+  font-size: 14px;
 }
 
 header {
@@ -63,9 +149,7 @@ header {
   text-align: center;
 }
 
-h1 {
-  font-size: min(7vw, 48px);
-}
+
 
 footer {
   margin-top: auto;

@@ -49,20 +49,25 @@ const reset = () => {
   <div class="ltud-choices" v-if="!isChoosing">
 
     <form @submit.prevent="addDecision" autocomplete="off">
-
       <label for="choice">Add choice: </label>
       <input id="choice" type="text" placeholder="" v-model="newChoice">
       <button :disabled="!newChoice">+</button>
     </form>
+    <span v-if="choices.length < 2" class="ltud-message ltud-message--is-warning">Add at least two choices</span>
 
     <ul>
       <li v-for="(decision, index) in choices">
-        {{ decision }}
-        <button @click="removeChoice(index)">x</button>
+        <span>{{ decision }}</span>
+        <span>&nbsp;</span>
+        <button @click="removeChoice(index)" class="ltud-btn ltud-btn--small">x</button>
       </li>
     </ul>
 
-    <button v-if="choices.length > 1" @click="decide()">Let The Universe Decide!</button>
+    <div class="ltud-action">
+      <span v-if="choices.length > 1" class="ltud-message">You can now...</span>
+      <button class="ltud-btn ltud-btn--large" v-if="choices.length > 1" @click="decide()">Let The Universe Decide!</button>
+    </div>
+
   </div>
 
 
@@ -92,6 +97,25 @@ ul {
 
 li {
   display: flex;
+  align-items: flex-end;
+  margin-bottom: 8px;
+  span:first-child {
+    /* background-color: pink; */
+    text-align: left;
+
+    font-family: 'Carbon';
+  color: var(--secondary-text-color);
+  font-size: 26px;
+  text-transform: uppercase;
+  }
+  span + span {
+    /* background-color: lightgreen; */
+    flex-grow: 2;
+    border-bottom: 1px dashed;
+    margin: 0 3px 5px 3px;
+
+
+  }
   button {
     margin-left: auto;
   }
@@ -107,9 +131,16 @@ form {
 
 .ltud-choices {
   text-align: center;
+}
 
-  ul + button {
-    margin-top: 58px;
+.ltud-action {
+  margin: 28px 0;
+  .ltud-message {
+    margin-bottom: 28px;
   }
 }
+
+ul + button {
+    margin-top: 58px;
+  }
 </style>
