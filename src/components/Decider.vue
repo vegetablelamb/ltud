@@ -8,6 +8,7 @@ const isChoosing = ref(false)
 const isThinking = ref(false)
 const hasChosen = ref(false)
 const chosen = ref()
+const showReset = ref(false)
 
 const addDecision = () => {
   choices.value.push(newChoice.value)
@@ -16,7 +17,6 @@ const addDecision = () => {
 
 
 const removeChoice = (i) => {
-  console.log(`we have an index`, i)
   choices.value.splice(i, 1)
 }
 
@@ -32,8 +32,11 @@ const decide = () => {
   isChoosing.value = true
   setTimeout(() => {
     hasChosen.value = true
-
   }, 1000)
+
+  setTimeout(() => {
+    showReset.value = true
+  }, 2000)
 
 }
 
@@ -41,6 +44,7 @@ const reset = () => {
   isChoosing.value = false
   isThinking.value = false
   hasChosen.value = false
+  showReset.value = false
 }
 </script>
 
@@ -48,12 +52,14 @@ const reset = () => {
 
   <div class="ltud-choices" v-if="!isChoosing">
 
+    <p>Add at least two choices - using the the form below - then sit back and let the Universe make the decision for you.</p>
+
     <form @submit.prevent="addDecision" autocomplete="off">
       <label for="choice">Add choice: </label>
       <input id="choice" type="text" placeholder="" v-model="newChoice">
       <button :disabled="!newChoice">+</button>
     </form>
-    <span v-if="choices.length < 2" class="ltud-message ltud-message--is-warning">Add at least two choices</span>
+    <!-- <span v-if="choices.length < 2" class="ltud-message ltud-message--is-warning">Add at least two choices</span> -->
 
     <ul>
       <li v-for="(decision, index) in choices">
@@ -71,16 +77,38 @@ const reset = () => {
   </div>
 
 
+<p>
+  <span v-if="isChoosing">The Universe has chosen...</span>
+  
 
-  <h2 v-if="isChoosing">The Universe has chosen...</h2>
-  <h2 v-if="hasChosen">{{ chosen }}</h2>
+  <Transition>
+    <span class="ltud-chosen" v-if="hasChosen">{{ chosen }}</span>
+  </Transition>
+</p>
 
-  <button v-if="hasChosen" @click="reset()">Reset</button>
+
+  <button v-if="showReset" @click="reset()">Reset</button>
 
 </template>
 
 
 <style scoped>
+
+/* .v-enter-active,
+.v-leave-active {
+  transition: opacity 1s ease;
+} */
+.v-enter-active {
+  transition: opacity 1s ease;
+}
+.v-leave-active {
+  /* transition: opacity 0; */
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
 
 ul, li {
   list-style: none;
@@ -143,4 +171,17 @@ form {
 ul + button {
     margin-top: 58px;
   }
+
+.ltud-chosen {
+  font-family: 'Carbon';
+  color: var(--secondary-text-color);
+  font-size: min(13vw, 78px);
+
+    display: block;
+    padding-top: 1em;
+    padding-bottom: 0.5em;
+    text-align: center;
+}
+
+  
 </style>

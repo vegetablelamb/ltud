@@ -57,7 +57,12 @@ body {
 h1 {
   font-family: 'Carbon';
   color: var(--secondary-text-color);
-  font-size: min(9vw, 62px);
+  font-size: min(10vw, 62px);
+}
+h2 {
+  font-family: 'Carbon';
+  color: var(--secondary-text-color);
+  /* font-size: min(9vw, 62px); */
 }
 /* h1.one {
   font-family: 'Carbon';
@@ -70,11 +75,12 @@ h1.three {
 } */
 
 p {
-  margin: 0;
+  margin: 24px 0;
 }
 
 section {
-  padding: 12px 24px;
+  padding: 0 24px;
+  line-height: 1.3em;
 }
 
 .container {
@@ -144,9 +150,8 @@ button.ltud-btn--large {
 }
 
 header {
-  /* background-color: palegreen; */
-  /* border: 1px solid white; */
   text-align: center;
+  padding-top: 8px;
 }
 
 
