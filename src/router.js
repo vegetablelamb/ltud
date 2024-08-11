@@ -1,16 +1,16 @@
-import { createMemoryHistory, createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 
-import Placeholder from './components/Placeholder.vue'
 import Ltud from './components/Ltud.vue'
+import About from './components/About.vue'
 
 const routes = [
-  { path: '/', component: Placeholder },
-  { path: '/demo', component: Ltud },
+  { path: '/', component: Ltud },
+  { path: '/about', component: About },
 ]
 
 const router = createRouter({
-//   history: createMemoryHistory(),
-history: createWebHashHistory(),
+  history: createWebHistory(),
+linkActiveClass: 'is-active',
   routes,
 })
 

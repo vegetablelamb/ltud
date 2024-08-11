@@ -20,16 +20,21 @@ const removeChoice = (i) => {
   choices.value.splice(i, 1)
 }
 
-const decide = () => {
-  const maxIndex = choices.value.length
+const getRandomIndex = (len) => {
+  const maxIndex = len;
   const randomIndex = Math.floor(Math.random() * maxIndex);
+  return randomIndex
+}
 
+const decide = () => {
+  const randomIndex = getRandomIndex(choices.value.length);
   chosen.value = choices.value[randomIndex]
 
   isThinking.value = true
 
   choices.value = []
   isChoosing.value = true
+
   setTimeout(() => {
     hasChosen.value = true
   }, 1000)
@@ -41,11 +46,13 @@ const decide = () => {
 }
 
 const reset = () => {
+  chosen.value = null
   isChoosing.value = false
   isThinking.value = false
   hasChosen.value = false
   showReset.value = false
 }
+
 </script>
 
 <template>
@@ -59,7 +66,6 @@ const reset = () => {
       <input id="choice" type="text" placeholder="" v-model="newChoice">
       <button :disabled="!newChoice">+</button>
     </form>
-    <!-- <span v-if="choices.length < 2" class="ltud-message ltud-message--is-warning">Add at least two choices</span> -->
 
     <ul>
       <li v-for="(decision, index) in choices">
@@ -76,11 +82,9 @@ const reset = () => {
 
   </div>
 
-
 <p>
-  <span v-if="isChoosing">The Universe has chosen...</span>
+  <span v-if="isChoosing">The Universe has decided...</span>
   
-
   <Transition>
     <span class="ltud-chosen" v-if="hasChosen">{{ chosen }}</span>
   </Transition>
@@ -94,15 +98,8 @@ const reset = () => {
 
 <style scoped>
 
-/* .v-enter-active,
-.v-leave-active {
-  transition: opacity 1s ease;
-} */
 .v-enter-active {
   transition: opacity 1s ease;
-}
-.v-leave-active {
-  /* transition: opacity 0; */
 }
 
 .v-enter-from,
@@ -117,7 +114,6 @@ ul, li {
 }
 
 ul {
-  /* background: pink; */
   max-width: 400px;
   margin: auto;
   margin-top: 42px;
@@ -128,21 +124,16 @@ li {
   align-items: flex-end;
   margin-bottom: 8px;
   span:first-child {
-    /* background-color: pink; */
     text-align: left;
-
-    font-family: 'Carbon';
-  color: var(--secondary-text-color);
-  font-size: 26px;
-  text-transform: uppercase;
+    font-family: 'TiltWarp';
+    color: var(--secondary-text-color);
+    font-size: 26px;
+    text-transform: uppercase;
   }
   span + span {
-    /* background-color: lightgreen; */
     flex-grow: 2;
     border-bottom: 1px dashed;
     margin: 0 3px 5px 3px;
-
-
   }
   button {
     margin-left: auto;
@@ -151,7 +142,6 @@ li {
 
 form {
   text-align: center;
-
   button {
     margin-left: 4px;
   }
@@ -173,14 +163,16 @@ ul + button {
   }
 
 .ltud-chosen {
-  font-family: 'Carbon';
+  font-family: 'TiltWarp';
   color: var(--secondary-text-color);
   font-size: min(13vw, 78px);
+  text-transform: uppercase;
+  line-height: 1em;
 
-    display: block;
-    padding-top: 1em;
-    padding-bottom: 0.5em;
-    text-align: center;
+  display: block;
+  padding-top: 1em;
+  padding-bottom: 0.5em;
+  text-align: center;
 }
 
   
