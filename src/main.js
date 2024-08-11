@@ -10,5 +10,4 @@ const options = {
     }
   }
 
-createApp(App).use(router, 
-    VueGtag, options).mount('#app');
+createApp(App).use(router, VueGtag, options).mount('#app');
