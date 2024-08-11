@@ -25,11 +25,6 @@
 
   article {
     text-align: center;
-
-    p {
-      text-align: justify;
-    }
-
     button {
       margin-top: 24px;
     }
