@@ -1,7 +1,18 @@
 <script setup>
+import { onMounted } from 'vue';
 import Footer from './components/Footer.vue';
 import Header from './components/Header.vue';
+import { bootstrap } from 'vue-gtag';
 
+
+onMounted(() => {
+  console.log(`the component is now mounted.`);
+  console.log('gtag', gtag);
+  // bootstrap();
+  // bootstrap().then((gtag) => {
+  //   console.log('gtag?', gtag)
+  // });
+})
 </script>
 
 <template>
