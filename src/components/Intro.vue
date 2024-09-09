@@ -11,8 +11,7 @@
 <article>
 
   <p>
-    If you are having trouble making a difficult decision - or can't make up your mind when choosing between a number of options - why don't you tap into the infinite wisdom of the cosmos and...Let The Universe Decide!
-  </p>
+    Can’t decide which path to take? Let the universe guide you. When faced with multiple choices, tap into the cosmos' infinite wisdom and...<em>Let the Universe Decide</em>!  </p>
 
   <button @click="enterApp">Enter</button>
 </article>

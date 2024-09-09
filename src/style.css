@@ -151,6 +151,11 @@ input[type="text"] {
   padding-left: 4px;
 }
 
+em {
+  font-style: normal;
+  font-weight: bold;
+}
+
 /* Stars 
 ------------------------------------- */
 
