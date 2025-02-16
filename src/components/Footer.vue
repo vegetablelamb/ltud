@@ -5,20 +5,17 @@
 <template>
 
   <footer>
-  © 2024 <a href="mailto:info@ltud.co.uk">Contact</a>
+    © 2025 <a href="mailto:info@ltud.co.uk">Contact</a>
   </footer>
 
-  
+
 </template>
 
 
 <style scoped>
-
-  footer {
-    margin-top: auto;
-    text-align: center;
-    margin-bottom: 6px;
-  }
-
-
+footer {
+  margin-top: auto;
+  text-align: center;
+  margin-bottom: 6px;
+}
 </style>
